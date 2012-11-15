@@ -1,0 +1,21 @@
+<project default="makeJar">
+	<target name="clean">
+		<delete dir="bin" />
+		<delete dir="dist" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="bin" />
+		<javac srcdir="src" destdir="bin" classpathref="classpath" includeantruntime="false" />
+	</target>
+
+	<target name="makeJar" depends="compile">
+		<mkdir dir="dist" />
+
+		<jar destfile="dist/ChromViewer.jar" basedir="bin">
+                        <manifest>
+                                <attribute name="Main-Class" value="chromviewer.ChromViewer" />
+                        </manifest>
+		</jar>
+	</target>
+</project>
